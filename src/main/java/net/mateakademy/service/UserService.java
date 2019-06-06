@@ -4,6 +4,7 @@ import net.mateakademy.model.UserEntity;
 import net.mateakademy.model.NoEntityException;
 import net.mateakademy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.UUID;
 
 @org.springframework.stereotype.Service
 @lombok.RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -21,12 +22,12 @@ public class UserService implements BaseService<UserEntity> {
     }
 
     @Override
-    public void deleteOneById(java.util.UUID id) {
+    public void deleteOneById(UUID id) {
         repository.deleteById(id);
     }
 
     @Override
-    public UserEntity findOneById(java.util.UUID id) throws NoEntityException {
+    public UserEntity findOneById(UUID id) throws NoEntityException {
         return repository.findById(id).orElseThrow(() -> new NoEntityException(id));
     }
 

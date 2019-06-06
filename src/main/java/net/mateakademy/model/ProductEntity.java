@@ -1,29 +1,41 @@
 package net.mateakademy.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.experimental.Accessors;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.IDENTITY;
 
-@lombok.Getter
-@lombok.Setter
-@javax.persistence.Entity
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.experimental.Accessors(chain = true)
-@javax.persistence.Table(name = "products")
-public class ProductEntity{
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+@Table(name = "products")
+public class ProductEntity {
 
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue(strategy = IDENTITY)
-    @javax.persistence.Column(name = "product_id")
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "product_id")
     private java.util.UUID id;
 
-    @javax.persistence.Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @javax.persistence.Column(name = "price")
+    @Column(name = "price")
     private java.math.BigDecimal price;
 
-    @javax.persistence.ManyToOne(fetch = EAGER)
-    @javax.persistence.JoinColumn(name = "producer_id")
+    @ManyToOne(fetch = EAGER)
+    @JoinColumn(name = "producer_id")
     private ProducerEntity producer;
 }

@@ -1,26 +1,39 @@
 package net.mateakademy.model;
 
+import javax.persistence.Table;
 
+import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.IDENTITY;
 
-@javax.persistence.Entity
-@lombok.Getter
-@lombok.Setter
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.experimental.Accessors(chain = true)
-@javax.persistence.Table(name = "producers")
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.OneToMany;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.experimental.Accessors;
+import java.util.Set;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+@Table(name = "producers")
 public class ProducerEntity {
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue(strategy = IDENTITY)
-    @javax.persistence.Column(name = "producer_id")
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "producer_id")
     private java.util.UUID id;
 
-    @javax.persistence.Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @javax.persistence.ElementCollection(targetClass=ProductEntity.class)
-    @javax.persistence.OneToMany(fetch = EAGER, mappedBy = "producer", cascade = javax.persistence.CascadeType.ALL)
-    private java.util.Set<net.mateakademy.model.ProductEntity> products;
+    @ElementCollection(targetClass=ProductEntity.class)
+    @OneToMany(fetch = EAGER, mappedBy = "producer", cascade = ALL)
+    private Set<ProductEntity> products;
 }

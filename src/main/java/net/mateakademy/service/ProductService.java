@@ -6,6 +6,7 @@ import net.mateakademy.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -23,12 +24,12 @@ public class ProductService implements BaseService<ProductEntity> {
     }
 
     @Override
-    public void deleteOneById(java.util.UUID id) {
+    public void deleteOneById(UUID id) {
         repository.deleteById(id);
     }
 
     @Override
-    public ProductEntity findOneById(java.util.UUID id) throws NoEntityException {
+    public ProductEntity findOneById(UUID id) throws NoEntityException {
         return repository.findById(id).orElseThrow(() -> new NoEntityException(id));
     }
 

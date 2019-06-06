@@ -1,20 +1,30 @@
 package net.mateakademy.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.experimental.Accessors;
 import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@lombok.Getter
-@lombok.Setter
-@javax.persistence.Entity
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.experimental.Accessors(chain = true)
-@javax.persistence.Table(name = "roles")
+import java.util.UUID;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+@Table(name = "roles")
 public class RoleEntity {
 
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue(strategy = IDENTITY)
-    @javax.persistence.Column(name = "role_id")
-    private java.util.UUID id;
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "role_id")
+    private UUID id;
 
     @javax.persistence.Column(name = "name", nullable = false)
     private String name;

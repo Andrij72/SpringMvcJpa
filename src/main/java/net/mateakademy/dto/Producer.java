@@ -1,12 +1,20 @@
 package net.mateakademy.dto;
 
-@lombok.Getter
-@lombok.Setter
-@lombok.NoArgsConstructor
-@lombok.AllArgsConstructor
-@lombok.experimental.Accessors(chain = true)
+import net.mateakademy.model.ProductEntity;
+import java.util.Set;
+import java.util.UUID;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.experimental.Accessors;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
 public class Producer {
-        private java.util.UUID id;
-        private String name;
-        private java.util.Set<net.mateakademy.model.ProductEntity> product;
-    }
+    private UUID id;
+    private String name;
+    private Set<ProductEntity> product;
+}

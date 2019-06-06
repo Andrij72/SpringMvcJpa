@@ -1,13 +1,18 @@
 package net.mateakademy.cotroller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import  org.springframework.web.servlet.ModelAndView;
 
-@org.springframework.stereotype.Controller
-@org.springframework.web.bind.annotation.RequestMapping("/log")
+
+@Controller
+@RequestMapping("/login")
 public class AuthorisationController {
-   @org.springframework.web.bind.annotation.GetMapping
-    public org.springframework.web.servlet.ModelAndView loginPage(){
-        org.springframework.web.servlet.ModelAndView modelAndView = new org.springframework.web.servlet.ModelAndView();
-        modelAndView.setViewName("log");
+   @GetMapping
+    public ModelAndView loginPage(){
+        ModelAndView modelAndView = new org.springframework.web.servlet.ModelAndView();
+        modelAndView.setViewName("login");
         return modelAndView;
     }
 }

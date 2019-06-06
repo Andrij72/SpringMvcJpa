@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ProducerService implements BaseService<ProducerEntity> {
@@ -24,12 +26,12 @@ public class ProducerService implements BaseService<ProducerEntity> {
     }
 
     @Override
-    public void deleteOneById(java.util.UUID id) {
+    public void deleteOneById(UUID id) {
         repository.deleteById(id);
     }
 
     @Override
-    public ProducerEntity findOneById(java.util.UUID id) throws NoEntityException{
+    public ProducerEntity findOneById(UUID id) throws NoEntityException {
         return repository.findById(id).orElseThrow(() -> new NoEntityException(id));
     }
 
