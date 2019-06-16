@@ -1,9 +1,11 @@
 package net.mateakademy.repository;
 
-import net.mateakademy.model.UserEntity;
+import java.util.Optional;
+import net.mateakademy.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-@org.springframework.stereotype.Repository
-public interface UserRepository extends JpaRepository<UserEntity, java.util.UUID> {
-    java.util.Optional<UserEntity> findByEmail(String email);
+@Repository
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    Optional<UserEntity> findByEmail(String email);
 }

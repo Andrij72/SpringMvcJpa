@@ -1,9 +1,9 @@
 package net.mateakademy.repository;
 
-import net.mateakademy.entities.ProductEntity;
+import net.mateakademy.entities.RoleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
+public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      layout:decorator="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome USER</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Wellcome User</h1><br>
+    <h2><a th:href="@{/admin/producers}">Admin Producers</a></h2>
+    <h2><a th:href="@{/admin/products}">Admin Products</a></h2>
+    <h2><a th:href="@{/admin/users}">Admin Users</a></h2>
+    <p>
+    <h2><a th:href="@{/user/producers}">User Producers</a></h2>
+    <h2><a th:href="@{/user/products}">User Products</a></h2>
+    <h2><a th:href="@{/user/users}">User Users</a></h2>
+    </div>
+</body>
+</html>

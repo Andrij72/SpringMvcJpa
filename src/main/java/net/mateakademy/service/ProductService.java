@@ -1,40 +1,14 @@
 package net.mateakademy.service;
 
-import net.mateakademy.model.ProductEntity;
-import net.mateakademy.model.NoEntityException;
-import net.mateakademy.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import lombok.RequiredArgsConstructor;
-import java.util.UUID;
+import java.util.List;
+import net.mateakademy.dto.Product;
 
-@Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class ProductService implements BaseService<ProductEntity> {
-    private final ProductRepository repository;
+public interface ProductService {
+    void createProduct(Product product);
 
-    @Override
-    public void createOne(ProductEntity entity) {
-        repository.save(entity);
-    }
+    Product getProductById(Long id);
 
-    @Override
-    public void updateOne(ProductEntity entity) {
-        repository.save(entity);
-    }
+    void deleteProductId(Long id);
 
-    @Override
-    public void deleteOneById(UUID id) {
-        repository.deleteById(id);
-    }
-
-    @Override
-    public ProductEntity findOneById(UUID id) throws NoEntityException {
-        return repository.findById(id).orElseThrow(() -> new NoEntityException(id));
-    }
-
-    @Override
-    public java.util.List<ProductEntity> findAll() {
-        return repository.findAll();
-    }
+    List<Product> getAllProducts();
 }

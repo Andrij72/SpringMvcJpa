@@ -1,42 +1,16 @@
 package net.mateakademy.service;
 
-import net.mateakademy.model.UserEntity;
-import net.mateakademy.model.NoEntityException;
-import net.mateakademy.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import java.util.UUID;
+import net.mateakademy.dto.User;
+import java.util.List;
 
-@org.springframework.stereotype.Service
-@lombok.RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class UserService implements BaseService<UserEntity> {
-    private final UserRepository repository;
+public interface UserService {
+    void createUser(User user);
 
-    @Override
-    public void createOne(UserEntity entity) {
-        repository.save(entity);
-    }
+    User getUserById(Long id);
 
-    @Override
-    public void updateOne(UserEntity entity) {
-        repository.save(entity);
-    }
+    void deleteUserById(Long id);
 
-    @Override
-    public void deleteOneById(UUID id) {
-        repository.deleteById(id);
-    }
+    User getUserByEmail(String email);
 
-    @Override
-    public UserEntity findOneById(UUID id) throws NoEntityException {
-        return repository.findById(id).orElseThrow(() -> new NoEntityException(id));
-    }
-
-    public UserEntity findOneByEmail(String email) throws NoEntityException {
-        return repository.findByEmail(email).orElseThrow(NoEntityException::new);
-    }
-
-    @Override
-    public java.util.List<UserEntity> findAll() {
-        return repository.findAll();
-    }
+    List<User> getAllUsers();
 }

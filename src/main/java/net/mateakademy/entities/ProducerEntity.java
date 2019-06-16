@@ -1,24 +1,26 @@
-package net.mateakademy.dto;
+package net.mateakademy.entities;
 
-import net.mateakademy.entities.ProducerEntity;
-import net.mateakademy.entities.ProductEntity;
 import java.util.Set;
-import java.util.UUID;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+@Entity
+@Table(name = "producers")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-public class Producer {
-    private Long id;
-    private UUID uuid;
+public class ProducerEntity extends UuidEntity{
+
+    @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "producer", fetch = FetchType.EAGER)
     private Set<ProductEntity> products;
 
     @Override
